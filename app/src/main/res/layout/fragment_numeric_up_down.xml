@@ -1,0 +1,23 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context="ghimdalasgmail_com.gestionepuntinippon.numericUpDown">
+
+    <Button
+        android:text="+"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="onPiuClick"/>
+    <Button
+        android:text="-"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="onMenoClick"/>
+    <TextView
+        android:id="@+id/numero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
