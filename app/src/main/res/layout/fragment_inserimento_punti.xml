@@ -1,0 +1,31 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="ghimdalasgmail_com.gestionepuntinippon.InserimentoPunti">
+    <EditText
+        android:id="@+id/spesa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:inputType="number"
+        android:layout_alignBottom="@+id/btn_aggiungi_spesa"
+        android:layout_toStartOf="@+id/label_spesa" />
+    <TextView
+        android:id="@+id/label_spesa"
+        android:layout_toStartOf="@+id/btn_aggiungi_spesa"
+        android:text="€"
+        android:textSize="40dp"
+        android:layout_alignBottom="@+id/btn_aggiungi_spesa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageButton
+        android:id="@+id/btn_aggiungi_spesa"
+        android:onClick="onAddSpesa"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_action_add" />
+</RelativeLayout>

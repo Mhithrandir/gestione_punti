@@ -134,6 +134,7 @@ public class AddUser extends AppCompatActivity {
             // tutto regolare, aggiunge l'utente
             this.finish();
         }*/
+        this.finish();
     }
     private boolean ContieneUtente(String nome, String cognome){
         for(User u : utenti)

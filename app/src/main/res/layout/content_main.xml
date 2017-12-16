@@ -15,20 +15,21 @@
             android:id="@+id/pnl_ricerca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/txt_cerca"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/btn_cerca"
-                android:layout_marginRight="90dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Button
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/btn_cerca" />
+
+            <ImageButton
                 android:id="@+id/btn_cerca"
-                android:layout_alignParentRight="true"
-                android:text="O"
-                android:onClick="onCercaClick"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:onClick="onCercaClick"
+                app:srcCompat="@drawable/ic_action_search" />
         </RelativeLayout>
         <ListView
             android:id="@+id/lista_utenti"

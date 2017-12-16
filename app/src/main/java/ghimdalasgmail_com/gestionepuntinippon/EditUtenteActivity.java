@@ -1,7 +1,9 @@
 package ghimdalasgmail_com.gestionepuntinippon;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -52,8 +54,8 @@ public class EditUtenteActivity extends AppCompatActivity {
         comune.setText(utente.getComune());
         EditText provincia = (EditText) findViewById(R.id.provincia);
         provincia.setText(utente.getProvincia());
-        TextView punti = (TextView) findViewById(R.id.punti);
-        punti.setText(utente.getPunti());
+        //TextView punti = (TextView) findViewById(R.id.punti);
+        //punti.setText(utente.getPunti());
         TextView numero = (TextView)this.findViewById(R.id.numero);
         numero.setText(utente.getPunti());
     }
@@ -71,9 +73,16 @@ public class EditUtenteActivity extends AppCompatActivity {
         else
             numero.setText(String.valueOf(Integer.parseInt(numero.getText().toString()) - 1));
     }
+    public void onAddSpesa(View view){
+        EditText spesa = (EditText) findViewById(R.id.spesa);
+        int punti = Integer.parseInt(spesa.getText().toString()) * 3;
+        utente.setPunti(String.valueOf(Integer.parseInt(utente.getPunti()) + punti));
+        TextView numero = (TextView)this.findViewById(R.id.numero);
+        numero.setText(utente.getPunti());
+        spesa.setText("");
+    }
     public void onSalvaClick(View view) {
         //Aggiorna i punti dell'utente che sta visualizzando
-
         EditText nome = (EditText) findViewById(R.id.nome);
         EditText cognome = (EditText) findViewById(R.id.cognome);
         EditText mail = (EditText) findViewById(R.id.mail);
@@ -113,6 +122,39 @@ public class EditUtenteActivity extends AppCompatActivity {
         if(!numero.getText().toString().equals(utente.getPunti()))
             this.updateField("punti", numero.getText().toString());
         this.finish();
+    }
+    public void onDeleteClick(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Attenzione");
+        builder.setMessage("Sei sicuro di voler cancellare definitivamente l'utente?");
+        // add the buttons
+        builder.setPositiveButton("Si",new DialogInterface.OnClickListener(){
+            public void onClick(DialogInterface dialog, int which) {
+                AsyncHttpClient client = new AsyncHttpClient();
+                client.get("http://gestpunti.altervista.org/?operation=elimina&id="
+                        + id, new AsyncHttpResponseHandler() {
+                    @Override
+                    public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                        String value = new String(responseBody);
+                        //controllare se c'è scritto che l'aggiornamento ha aviuto successo
+                    }
+                    @Override
+                    public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                        //Gestisce eventuali errori tipo connessione fallita
+                        Snackbar.make(localView, "Errore nell'update:", Snackbar.LENGTH_LONG)
+                                .setAction(error.getMessage(), null).show();
+                        System.out.print(error.getMessage());
+                        error.printStackTrace();
+                    }
+                });
+                finish();
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("no",null);
+        // create and show the alert dialog
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
     private void updateField(String field, String value){
         AsyncHttpClient client = new AsyncHttpClient();

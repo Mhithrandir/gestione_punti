@@ -1,20 +1,24 @@
 package ghimdalasgmail_com.gestionepuntinippon;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AdapterUtente extends ArrayAdapter<User> {
+public class AdapterUtente extends ArrayAdapter<User> implements Filterable {
     private SelecteUserListener onUtenteSelezionato;
+    private ItemFilter filtro;
     public AdapterUtente(Context context, int textViewResourceId, ArrayList<User> objects){
         super(context, textViewResourceId, objects);
+        filtro = new ItemFilter();
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -34,6 +38,11 @@ public class AdapterUtente extends ArrayAdapter<User> {
         numero_tessera.setText(user.getNumero_tessera());
         TextView punti = (TextView)convertView.findViewById(R.id.punti);
         punti.setText(user.getPunti());
+        if (position % 2 == 1) {
+            convertView.setBackgroundColor(Color.argb(255,214,228,249));
+        } else {
+            convertView.setBackgroundColor(Color.argb(255,249,225,214));
+        }
         return convertView;
     }
     public SelecteUserListener getSelecteUserListener(){ return onUtenteSelezionato; }
@@ -42,7 +51,7 @@ public class AdapterUtente extends ArrayAdapter<User> {
     }
     @Override
     public Filter getFilter() {
-        return new ItemFilter();
+        return filtro;
     }
     public class ItemFilter extends Filter {
         @Override
@@ -62,7 +71,7 @@ public class AdapterUtente extends ArrayAdapter<User> {
 
         @Override
         protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-
+            notifyDataSetChanged();
         }
     }
 }

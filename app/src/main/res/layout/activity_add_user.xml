@@ -15,6 +15,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_nome"
+                android:inputType="textCapWords"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_nome"
                 android:layout_width="match_parent"
@@ -31,6 +32,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_cognome"
+                android:inputType="textCapWords"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_cognome"
                 android:layout_width="match_parent"
@@ -47,6 +49,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_mail"
+                android:inputType="textEmailAddress"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_mail"
                 android:layout_width="match_parent"
@@ -63,6 +66,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_cell"
+                android:inputType="phone"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_cell"
                 android:layout_width="match_parent"
@@ -79,6 +83,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_numero_tessera"
+                android:inputType="number"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_numero_tessera"
                 android:layout_width="match_parent"
@@ -111,6 +116,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_indirizzo"
+                android:inputType="textPostalAddress"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_indirizzo"
                 android:layout_width="match_parent"
@@ -127,6 +133,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_data_nascita"
+                android:inputType="date"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_data_nascita"
                 android:layout_width="match_parent"
@@ -143,6 +150,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_cap"
+                android:inputType="number"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_cap"
                 android:layout_width="match_parent"
@@ -159,6 +167,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_comune"
+                android:inputType="text"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_comune"
                 android:layout_width="match_parent"
@@ -175,6 +184,7 @@
             android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/add_provincia"
+                android:inputType="text"
                 android:layout_alignParentLeft="true"
                 android:layout_alignRight="@+id/label_provincia"
                 android:layout_width="match_parent"
@@ -186,10 +196,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
-        <Button
-            android:text="Aggiungi"
+        <ImageButton
             android:onClick="onAggiungiClick"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/ic_action_save"/>
     </LinearLayout>
 </ScrollView>

@@ -7,6 +7,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -38,7 +40,24 @@ public class MainActivity extends AppCompatActivity {
         final Context context = this;
 
         EditText cerca = (EditText)findViewById(R.id.txt_cerca);
+        cerca.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                String value = s.toString();
+                adapter.getFilter().filter(value);
 
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // TODO Auto-generated method stub
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+        });
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCercaClick(View view){
         //filtro la listview
-        EditText cerca = (EditText)findViewById(R.id.txt_cerca);
-        adapter.getFilter().filter(cerca.getText());
+        //EditText cerca = (EditText)findViewById(R.id.txt_cerca);
+
     }
 }
