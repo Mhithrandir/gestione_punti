@@ -10,192 +10,148 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tipologia di tessera"
+            android:textAlignment="center"
+            android:textSize="20dp" />
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_nome"
-                android:inputType="textCapWords"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_nome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
             <TextView
-                android:id="@+id/label_nome"
-                android:text="Nome"
-                android:layout_alignParentRight="true"
+                android:id="@+id/label_tipologia_free"
+                android:text="Tessera Gratuita"
+                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_cognome"
-                android:inputType="textCapWords"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_cognome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_cognome"
-                android:text="Cognome"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_mail"
-                android:inputType="textEmailAddress"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_mail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_mail"
-                android:text="Mail"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_cell"
-                android:inputType="phone"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_cell"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_cell"
-                android:text="Cellulare"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_numero_tessera"
-                android:inputType="number"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_numero_tessera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_numero_tessera"
-                android:text="Numero Tessera"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <CheckBox
+            <Switch
                 android:id="@+id/add_tipo"
-                android:text="Gratuita"
-                android:layout_alignRight="@+id/label_tipologia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"/>
             <TextView
-                android:id="@+id/label_tipologia"
-                android:text="Tipo di tessera"
+                android:id="@+id/label_tipologia_paid"
+                android:text="Tessera a pagamento"
                 android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
-        <RelativeLayout
+        <EditText
+            android:id="@+id/add_nome"
+            android:inputType="textCapWords"
+            android:hint="Nome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_indirizzo"
-                android:inputType="textPostalAddress"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_indirizzo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_indirizzo"
-                android:text="Indirizzo"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_cognome"
+            android:inputType="textCapWords"
+            android:hint="Cognome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_data_nascita"
-                android:inputType="date"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_data_nascita"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_data_nascita"
-                android:text="Data di nascita"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_indirizzo"
+            android:inputType="textPostalAddress"
+            android:hint="Indirizzo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_cap"
-                android:inputType="number"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_cap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_cap"
-                android:text="C.A.P."
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_cap"
+            android:inputType="number"
+            android:hint="CAP"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_comune"
-                android:inputType="text"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_comune"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_comune"
-                android:text="Comune"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_comune"
+            android:inputType="text"
+            android:hint="Comune di residenza"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_provincia"
+            android:inputType="text"
+            android:hint="Sigla provincia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_data_nascita"
+            android:inputType="date"
+            android:hint="Data di nascita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_mail"
+            android:inputType="textEmailAddress"
+            android:hint="Indirizzo Mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_cell"
+            android:inputType="phone"
+            android:hint="Recapito telefonico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/add_numero_tessera"
+            android:inputType="number"
+            android:hint="Numero di tessera"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Privacy"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Ai sensi dell'art. 13 del decreto legislativo n. 196/2003, recante disposizioni sul nuovo 'Codice in materia di protezione dei dati personali', letta l'informativa sull'utilizzazione dei miei dati personali ai sensi dell'art. 13 del decreto legislativo numero 196 del 30 giugno 2003 , recante il nuovo 'Codice in materia di protezione dei dati personali', consento al loro trattamento nella misura necessaria per gli scopi statutari."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/check_privacy"
+            android:text="Acconsento"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Statuto"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Dichiaro di aver letto e compreso lo statuto dell’Associazione Culturale Nipponbashi e di essere completamente d’accordo con i principi ed i fini della stessa. Lo statuto è visionabile su https://goo.gl/eMo86e"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <CheckBox
+            android:id="@+id/check_statuto"
+            android:text="Acconsento"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Newsletter"
+            android:textSize="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Acconsento all'iscrizione alla newsletter di Ikiya. La newsletter viene inviata 1 volta al mese e contiene le novità e gli eventi del negozio e dell'associazione."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/add_provincia"
-                android:inputType="text"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_provincia"
+            <RadioButton
+                android:id="@+id/check_newsletter"
+                android:text="Acconsento"
+                android:textSize="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_provincia"
-                android:text="Provincia"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
+            <RadioButton
+                android:text="Non Acconsento"
+                android:textSize="20dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-        </RelativeLayout>
+        </LinearLayout>
         <ImageButton
             android:onClick="onAggiungiClick"
             android:layout_width="match_parent"

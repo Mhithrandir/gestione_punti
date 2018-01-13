@@ -11,227 +11,137 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
-        <RelativeLayout
+        <TextView
+            android:text="Nome"
+            android:labelFor="@+id/nome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/nome"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_nome"
-                android:inputType="textCapWords"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_nome"
-                android:text="Nome"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/nome"
+            android:inputType="textCapWords"
+            android:hint="Nome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/cognome"
-                android:inputType="textCapWords"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_cognome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_cognome"
-                android:text="Cognome"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Cognome"
+            android:labelFor="@+id/cognome"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/mail"
-                android:inputType="textEmailAddress"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_mail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_mail"
-                android:text="Mail"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/cognome"
+            android:inputType="textCapWords"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/cell"
-                android:inputType="phone"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_cell"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_cell"
-                android:text="Cellulare"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Mail"
+            android:labelFor="@+id/mail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/scadenza"
-                android:inputType="date"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_scadenza"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_scadenza"
-                android:text="Scadenza"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/mail"
+            android:inputType="textEmailAddress"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/numero_tessera"
-                android:inputType="number"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_numero_tessera"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_numero_tessera"
-                android:text="Tessera n°"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Cellulare"
+            android:labelFor="@+id/cell"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/registrazione"
-                android:inputType="date"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_registrazione"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_registrazione"
-                android:text="Data di registrazione"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/cell"
+            android:inputType="phone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/indirizzo"
-                android:inputType="text"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_indirizzo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_indirizzo"
-                android:text="indirizzo"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Scadenza"
+            android:labelFor="@id/scadenza"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/nascita"
-                android:inputType="date"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_nascita"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_nascita"
-                android:text="Data di nascita"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/scadenza"
+            android:inputType="date"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/cap"
-                android:inputType="number"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_cap"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_cap"
-                android:text="CAP"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Tessera n°"
+            android:labelFor="@id/numero_tessera"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/comune"
-                android:inputType="text"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_comune"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_comune"
-                android:text="Comune"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/numero_tessera"
+            android:inputType="number"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/provincia"
-                android:inputType="text"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_provincia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_provincia"
-                android:text="Provincia"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-        <RelativeLayout
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Data di registrazione"
+            android:labelFor="@id/registrazione"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <fragment
-                android:name="ghimdalasgmail_com.gestionepuntinippon.numericUpDown"
-                android:id="@+id/punti_add"
-                android:layout_alignParentLeft="true"
-                android:layout_alignRight="@+id/label_add_punti"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/label_add_punti"
-                android:text="Modifica punti"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/registrazione"
+            android:inputType="date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="indirizzo"
+            android:labelFor="@id/indirizzo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/indirizzo"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Data di nascita"
+            android:labelFor="@id/nascita"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/nascita"
+            android:inputType="date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="CAP"
+            android:labelFor="@id/cap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/cap"
+            android:inputType="number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Comune"
+            android:labelFor="@id/comune"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/comune"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="Provincia"
+            android:labelFor="@id/provincia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/provincia"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/label_punti"
+            android:labelFor="@id/punti_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <fragment
+            android:name="ghimdalasgmail_com.gestionepuntinippon.numericUpDown"
+            android:id="@+id/punti_add"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
         <fragment
             android:name="ghimdalasgmail_com.gestionepuntinippon.InserimentoPunti"
             android:id="@+id/sepsa_add"

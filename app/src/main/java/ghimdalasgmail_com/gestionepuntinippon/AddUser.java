@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -78,14 +80,29 @@ public class AddUser extends AppCompatActivity {
         utente.setProvincia(provincia.getText().toString());
         Calendar app = Calendar.getInstance();
         utente.setScadenza(String.valueOf(app.get(Calendar.YEAR)) + "-12-31");
-        CheckBox tipo = (CheckBox) this.findViewById(R.id.add_tipo);
-        if(tipo.isChecked())
+        Switch tipo = (Switch) this.findViewById(R.id.add_tipo);
+        if(!tipo.isChecked())
             utente.setTipologia(Tipo.Gratuito);
         else
             utente.setTipologia(Tipo.Ordinario);
         utente.setId(UUID.randomUUID().toString());
         utente.setPunti("0");
         utente.setRegistrazione(String.valueOf(app.get(Calendar.YEAR)) + "-" + String.valueOf(app.get(Calendar.MONTH)) + "-" + String.valueOf(app.get(Calendar.DAY_OF_MONTH)));
+        CheckBox privacy = (CheckBox) this.findViewById(R.id.check_privacy);
+        if(!privacy.isChecked()){
+            this.mostraDialog("Errore", "Attenzione!: è necessario acconsentire alla privacy!");
+            return;
+        }
+        utente.setPrivacy(true);
+        CheckBox statuto = (CheckBox) this.findViewById(R.id.check_statuto);
+        if(!privacy.isChecked()){
+            this.mostraDialog("Errore", "Attenzione!: è necessario acconsentire allo statuto!");
+            return;
+        }
+        utente.setStatuto(true);
+        RadioButton newsletter = (RadioButton) this.findViewById(R.id.check_newsletter);
+        utente.setNewsletter(newsletter.isChecked());
+
         AsyncHttpClient client = new AsyncHttpClient();
         String get = "http://gestpunti.altervista.org/?operation=add&" + utente.getAdd();
         client.get(get, new AsyncHttpResponseHandler() {

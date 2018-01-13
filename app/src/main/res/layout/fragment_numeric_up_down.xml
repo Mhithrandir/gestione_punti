@@ -22,12 +22,27 @@
         android:layout_toEndOf="@+id/btn_add_number"
         android:onClick="onMenoClick"
         app:srcCompat="@drawable/ic_action_remove" />
+    <Button
+        android:text="Edit"
+        android:id="@+id/btn_rem__many_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/btn_rem_number"
+        android:onClick="onMenoManyClick"/>
+    <Button
+        android:text="- €"
+        android:id="@+id/btn_rem_euro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/btn_rem__many_number"
+        android:onClick="onMenoEuroClick"/>
     <TextView
         android:id="@+id/numero"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/btn_rem_number"
+        android:layout_toEndOf="@+id/btn_rem_euro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
 </RelativeLayout>

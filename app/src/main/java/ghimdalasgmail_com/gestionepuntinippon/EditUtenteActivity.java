@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.SeekBar;
@@ -20,8 +21,8 @@ public class EditUtenteActivity extends AppCompatActivity {
 
     private String id = "";
     private User utente;
-    private View localView;
 
+    private View localView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,27 +59,54 @@ public class EditUtenteActivity extends AppCompatActivity {
         //punti.setText(utente.getPunti());
         TextView numero = (TextView)this.findViewById(R.id.numero);
         numero.setText(utente.getPunti());
+        TextView label_punti = (TextView)this.findViewById(R.id.label_punti);
+        label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(utente.getPunti()) / 102) + " € di sconto)");
     }
     public void onPiuClick(View view) {
         TextView numero = (TextView)this.findViewById(R.id.numero);
         if(numero.getText() == "")
             numero.setText("1");
-        else
+        else {
             numero.setText(String.valueOf(Integer.parseInt(numero.getText().toString()) + 1));
+            TextView label_punti = (TextView)this.findViewById(R.id.label_punti);
+            label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(numero.getText().toString()) / 102) + " € di sconto)");
+        }
     }
     public void onMenoClick(View view) {
         TextView numero = (TextView)this.findViewById(R.id.numero);
         if((numero.getText() == "")||(numero.getText() == "1")||(numero.getText() == "0"))
             numero.setText("0");
-        else
+        else {
             numero.setText(String.valueOf(Integer.parseInt(numero.getText().toString()) - 1));
+            TextView label_punti = (TextView)this.findViewById(R.id.label_punti);
+            label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(numero.getText().toString()) / 102) + " € di sconto)");
+        }
+    }
+    public void onMenoManyClick(View view) {
+        TextView numero = (TextView)this.findViewById(R.id.numero);
+        this.mostraInputDialog("Modifica il totale", "Modifica il totale dei punti", numero.getText().toString());
+    }
+    public void onMenoEuroClick(View view) {
+        TextView numero = (TextView)this.findViewById(R.id.numero);
+        if(Integer.parseInt(numero.getText().toString())<120)return;
+        if((numero.getText() == "")||(numero.getText() == "1")||(numero.getText() == "0"))
+            numero.setText("0");
+        else {
+            numero.setText(String.valueOf(Integer.parseInt(numero.getText().toString()) - 102));
+            TextView label_punti = (TextView)this.findViewById(R.id.label_punti);
+            label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(numero.getText().toString()) / 102) + " € di sconto)");
+        }
     }
     public void onAddSpesa(View view){
         EditText spesa = (EditText) findViewById(R.id.spesa);
+        if(spesa.getText().toString().equals(""))return;
+        //ogni 102 punti sono un label_punti per la retro conversione
         int punti = Integer.parseInt(spesa.getText().toString()) * 3;
         utente.setPunti(String.valueOf(Integer.parseInt(utente.getPunti()) + punti));
         TextView numero = (TextView)this.findViewById(R.id.numero);
         numero.setText(utente.getPunti());
+        TextView label_punti = (TextView)this.findViewById(R.id.label_punti);
+        label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(numero.getText().toString()) / 102) + " € di sconto)");
         spesa.setText("");
     }
     public void onSalvaClick(View view) {
@@ -95,7 +123,7 @@ public class EditUtenteActivity extends AppCompatActivity {
         EditText provincia = (EditText) findViewById(R.id.provincia);
         EditText scadenza = (EditText) findViewById(R.id.scadenza);
         EditText numero_tessera = (EditText) findViewById(R.id.numero_tessera);
-        TextView punti = (TextView) findViewById(R.id.punti);
+        TextView punti = (TextView) findViewById(R.id.numero);
         TextView numero = (TextView)this.findViewById(R.id.numero);
         if(!nome.getText().toString().equals(utente.getName()))
             this.updateField("nome", nome.getText().toString());
@@ -119,8 +147,9 @@ public class EditUtenteActivity extends AppCompatActivity {
             this.updateField("provincia", provincia.getText().toString());
         if(!scadenza.getText().toString().equals(utente.getScadenza()))
             this.updateField("scadenza", scadenza.getText().toString());
-        if(!numero.getText().toString().equals(utente.getPunti()))
-            this.updateField("punti", numero.getText().toString());
+        this.updateField("punti", punti.getText().toString());
+        if(!numero_tessera.getText().toString().equals(utente.getNumero_tessera()))
+            this.updateField("numero_tessera", numero_tessera.getText().toString());
         this.finish();
     }
     public void onDeleteClick(View view) {
@@ -177,5 +206,36 @@ public class EditUtenteActivity extends AppCompatActivity {
                 error.printStackTrace();
             }
         });
+    }
+    private void mostraInputDialog(String title, String messaggio, String totale){
+        android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(this).create();
+        dialog.setTitle(title);
+        final EditText input = new EditText(this);
+        input.setText(totale);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER);
+        dialog.setView(input);
+        dialog.setMessage(messaggio);
+        //String punti = "";
+        dialog.setButton(android.app.AlertDialog.BUTTON_POSITIVE, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        setMenoPunti(Integer.parseInt(input.getText().toString()));
+                        //Ha cliccato ok
+                        dialog.dismiss();
+                    }
+                });
+        dialog.setButton(android.app.AlertDialog.BUTTON_NEGATIVE, "CANCEL",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        dialog.show();
+    }
+    private void setMenoPunti(int meno_punti){
+        TextView numero = (TextView)this.findViewById(R.id.numero);
+        numero.setText(String.valueOf(meno_punti));
+        TextView label_punti = (TextView)this.findViewById(R.id.label_punti);
+        label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(numero.getText().toString()) / 102) + " € di sconto)");
     }
 }
