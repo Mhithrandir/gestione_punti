@@ -205,18 +205,8 @@ public class User implements Serializable {
                 + "&newsletter=" + news_letter;
     }
     public boolean contains(CharSequence value){
-        return ((this.getName().contains(value))||
-                (this.getCognome().contains(value))||
-                (this.getMail().contains(value))||
-                (this.getCell().contains(value))||
-                (this.getScadenza().contains(value))||
-                (this.getPunti().contains(value))||
-                (this.getNumero_tessera().contains(value))||
-                (this.getRegistrazione().contains(value))||
-                (this.getIndirizzo().contains(value))||
-                (this.getNascita().contains(value))||
-                (this.getCap().contains(value))||
-                (this.getComune().contains(value))||
-                (this.getProvincia().contains(value)));
+        return ((this.getName().toUpperCase().contains(value.toString().toUpperCase()))||
+                (this.getCognome().toUpperCase().contains(value.toString().toUpperCase()))||
+                (this.getMail().toUpperCase().contains(value.toString().toUpperCase())));
     }
 }

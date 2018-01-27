@@ -15,10 +15,9 @@ import java.util.ArrayList;
 
 public class AdapterUtente extends ArrayAdapter<User> implements Filterable {
     private SelecteUserListener onUtenteSelezionato;
-    private ItemFilter filtro;
+    private Filter filtro;
     public AdapterUtente(Context context, int textViewResourceId, ArrayList<User> objects){
         super(context, textViewResourceId, objects);
-        filtro = new ItemFilter();
     }
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
@@ -53,26 +52,8 @@ public class AdapterUtente extends ArrayAdapter<User> implements Filterable {
     public Filter getFilter() {
         return filtro;
     }
-    public class ItemFilter extends Filter {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            int conteggio = getCount();
-            FilterResults results = new FilterResults();
-            ArrayList<User> vett = new ArrayList<>();
-            for(int i = 0;i < conteggio;i++){
-                User ut = getItem(i);
-                if(ut.contains(charSequence))
-                    vett.add(ut);
-            }
-            results.values = vett;
-            results.count = vett.size();
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            notifyDataSetChanged();
-        }
+    public void setFilter(Filter value){
+        this.filtro = value;
     }
 }
 

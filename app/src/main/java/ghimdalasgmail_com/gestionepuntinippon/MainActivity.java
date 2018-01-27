@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.ListView;
 
 import com.loopj.android.http.AsyncHttpClient;
@@ -29,6 +30,7 @@ import cz.msebera.android.httpclient.Header;
 public class MainActivity extends AppCompatActivity {
 
     private ArrayList<User> utenti;
+    private ArrayList<User> utenti_origin;
     private AdapterUtente adapter;
 
     @Override
@@ -47,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
                 adapter.getFilter().filter(value);
 
             }
-
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
                 // TODO Auto-generated method stub
@@ -71,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         utenti = new ArrayList<>();
+        utenti_origin = new ArrayList<>();
         adapter = new AdapterUtente(this, R.layout.adapter_users, utenti);
         ListView lista_utenti = (ListView) findViewById(R.id.lista_utenti);
         adapter.setSelecteUserListener(new SelecteUserListener() {
@@ -83,6 +85,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         lista_utenti.setAdapter(adapter);
+        Filter filtro = new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                FilterResults results = new FilterResults();
+                ArrayList<User> FilteredUsers = new ArrayList<>();
+                charSequence = charSequence.toString().toLowerCase();
+                for(int i = 0;i < utenti_origin.size();i++){
+                    User user = utenti_origin.get(i);
+                    if(user.contains(charSequence.toString())){
+                        FilteredUsers.add(user);
+                    }
+                }
+                results.count = FilteredUsers.size();
+                results.values = FilteredUsers;
+                return results;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                utenti = (ArrayList<User>) filterResults.values;
+                adapter.notifyDataSetChanged();
+                adapter.clear();
+                for(User u : utenti)
+                    adapter.add(u);
+                adapter.notifyDataSetChanged();
+            }
+        };
+        adapter.setFilter(filtro);
         //this.AggiornaUtenti();
     }
 
@@ -94,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void AggiornaUtenti(){
         utenti.clear();
+        utenti_origin.clear();
         AsyncHttpClient client = new AsyncHttpClient();
         client.get("http://gestpunti.altervista.org/?operation=list_all", new AsyncHttpResponseHandler() {
             @Override
@@ -109,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                     while(chiavi.hasNext()){
                         String key = chiavi.next();
                         utenti.add(new User(key, obj.getJSONObject(key)));
+                        utenti_origin.add(new User(key, obj.getJSONObject(key)));
                     }
                 } catch (JSONException e) {
                     System.out.print(e.getMessage());
@@ -149,7 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onCercaClick(View view){
         //filtro la listview
-        //EditText cerca = (EditText)findViewById(R.id.txt_cerca);
-
+        EditText cerca = (EditText)findViewById(R.id.txt_cerca);
+        adapter.getFilter().filter(cerca.getText());
     }
 }
