@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume(){
+        EditText cerca = (EditText)findViewById(R.id.txt_cerca);
         this.AggiornaUtenti();
         super.onResume();
     }

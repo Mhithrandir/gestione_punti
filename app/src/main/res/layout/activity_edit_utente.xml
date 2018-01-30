@@ -143,6 +143,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <fragment
+            android:name="ghimdalasgmail_com.gestionepuntinippon.FragmentCancellazionePunti"
+            android:id="@+id/sepsa_remove"
+            android:layout_alignParentLeft="true"
+            android:layout_alignRight="@+id/label_add_spesa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <fragment
             android:name="ghimdalasgmail_com.gestionepuntinippon.InserimentoPunti"
             android:id="@+id/sepsa_add"
             android:layout_alignParentLeft="true"

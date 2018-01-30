@@ -101,13 +101,30 @@ public class EditUtenteActivity extends AppCompatActivity {
         EditText spesa = (EditText) findViewById(R.id.spesa);
         if(spesa.getText().toString().equals(""))return;
         //ogni 102 punti sono un label_punti per la retro conversione
-        int punti = Integer.parseInt(spesa.getText().toString()) * 3;
-        utente.setPunti(String.valueOf(Integer.parseInt(utente.getPunti()) + punti));
+        double punti = Double.parseDouble(spesa.getText().toString()) * 3;
+        utente.setPunti(String.valueOf(Integer.parseInt(utente.getPunti()) + new Double(punti).intValue()));
         TextView numero = (TextView)this.findViewById(R.id.numero);
         numero.setText(utente.getPunti());
         TextView label_punti = (TextView)this.findViewById(R.id.label_punti);
         label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(numero.getText().toString()) / 102) + " € di sconto)");
         spesa.setText("");
+    }
+    public void onDeleteSpesa(View view){
+        EditText spesa = (EditText) findViewById(R.id.spesa_rem);
+        if(spesa.getText().toString().equals(""))return;
+        //ogni 102 punti sono un label_punti per la retro conversione
+        double punti = Double.parseDouble(spesa.getText().toString()) * 102;
+        double puntiTot = Double.parseDouble(utente.getPunti() + ".0") / 102;
+        if(new Double(punti).intValue() > Integer.parseInt(utente.getPunti()))
+            this.mostraDialog("Errore!", "Il massimo sconto imponibile è : " + String.valueOf(puntiTot).substring(0, String.valueOf(puntiTot).indexOf(".") + 3));
+        else {
+            utente.setPunti(String.valueOf(Integer.parseInt(utente.getPunti()) - new Double(punti).intValue()));
+            TextView numero = (TextView) this.findViewById(R.id.numero);
+            numero.setText(utente.getPunti());
+            TextView label_punti = (TextView) this.findViewById(R.id.label_punti);
+            label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(numero.getText().toString()) / 102) + " € di sconto)");
+            spesa.setText("");
+        }
     }
     public void onSalvaClick(View view) {
         //Aggiorna i punti dell'utente che sta visualizzando
@@ -237,5 +254,18 @@ public class EditUtenteActivity extends AppCompatActivity {
         numero.setText(String.valueOf(meno_punti));
         TextView label_punti = (TextView)this.findViewById(R.id.label_punti);
         label_punti.setText("Modifica punti (" + String.valueOf(Integer.parseInt(numero.getText().toString()) / 102) + " € di sconto)");
+    }
+    private void mostraDialog(String title, String messaggio){
+        android.app.AlertDialog dialog = new android.app.AlertDialog.Builder(this).create();
+        dialog.setTitle(title);
+        dialog.setMessage(messaggio);
+        dialog.setButton(android.app.AlertDialog.BUTTON_NEUTRAL, "OK",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Ha cliccato ok
+                        dialog.dismiss();
+                    }
+                });
+        dialog.show();
     }
 }

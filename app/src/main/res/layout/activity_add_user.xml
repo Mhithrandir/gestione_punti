@@ -8,7 +8,7 @@
     tools:context="ghimdalasgmail_com.gestionepuntinippon.AddUser">
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="match_parent"
@@ -19,24 +19,27 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/label_tipologia_free"
-                android:text="Tessera Gratuita"
-                android:layout_alignParentLeft="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="Tessera Gratuita" />
             <Switch
                 android:id="@+id/add_tipo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"/>
+
             <TextView
                 android:id="@+id/label_tipologia_paid"
-                android:text="Tessera a pagamento"
-                android:layout_alignParentRight="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="Tessera a pagamento" />
         </RelativeLayout>
+
         <EditText
             android:id="@+id/add_nome"
             android:inputType="textCapWords"

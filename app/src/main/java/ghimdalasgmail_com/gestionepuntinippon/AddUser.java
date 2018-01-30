@@ -68,16 +68,16 @@ public class AddUser extends AppCompatActivity {
         EditText provincia = (EditText)this.findViewById(R.id.add_provincia);
 
         User utente = new User();
-        utente.setName(nome.getText().toString());
-        utente.setCognome(cognome.getText().toString());
-        utente.setMail(mail.getText().toString());
-        utente.setCell(cell.getText().toString());
-        utente.setNumero_tessera(numero_tessera.getText().toString());
-        utente.setIndirizzo(indirizzo.getText().toString());
-        utente.setNascita(nascita.getText().toString());
-        utente.setCap(cap.getText().toString());
-        utente.setComune(comune.getText().toString());
-        utente.setProvincia(provincia.getText().toString());
+        utente.setName(nome.getText().toString().replace("'", " "));
+        utente.setCognome(cognome.getText().toString().replace("'", " "));
+        utente.setMail(mail.getText().toString().replace("'", " "));
+        utente.setCell(cell.getText().toString().replace("'", " "));
+        utente.setNumero_tessera(numero_tessera.getText().toString().replace("'", " "));
+        utente.setIndirizzo(indirizzo.getText().toString().replace("'", " "));
+        utente.setNascita(nascita.getText().toString().replace("'", " "));
+        utente.setCap(cap.getText().toString().replace("'", " "));
+        utente.setComune(comune.getText().toString().replace("'", " "));
+        utente.setProvincia(provincia.getText().toString().replace("'", " "));
         Calendar app = Calendar.getInstance();
         utente.setScadenza(String.valueOf(app.get(Calendar.YEAR)) + "-12-31");
         Switch tipo = (Switch) this.findViewById(R.id.add_tipo);

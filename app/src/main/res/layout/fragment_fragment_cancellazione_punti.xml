@@ -3,30 +3,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="ghimdalasgmail_com.gestionepuntinippon.InserimentoPunti">
+    tools:context="ghimdalasgmail_com.gestionepuntinippon.FragmentCancellazionePunti">
+
     <EditText
-        android:id="@+id/spesa"
+        android:id="@+id/spesa_rem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:inputType="numberDecimal"
-        android:hint="Inserisci euro da aggiungere"
-        android:layout_alignBottom="@+id/btn_aggiungi_spesa"
-        android:layout_toStartOf="@+id/label_spesa" />
+        android:hint="inserisci euro da togliere"
+        android:layout_alignBottom="@+id/btn_rem_spesa"
+        android:layout_toStartOf="@+id/label_spesa_rem" />
     <TextView
-        android:id="@+id/label_spesa"
-        android:layout_toStartOf="@+id/btn_aggiungi_spesa"
+        android:id="@+id/label_spesa_rem"
+        android:layout_toStartOf="@+id/btn_rem_spesa"
         android:text="€"
         android:textSize="40dp"
-        android:layout_alignBottom="@+id/btn_aggiungi_spesa"
+        android:layout_alignBottom="@+id/btn_rem_spesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageButton
-        android:id="@+id/btn_aggiungi_spesa"
-        android:onClick="onAddSpesa"
+        android:id="@+id/btn_rem_spesa"
+        android:onClick="onDeleteSpesa"
         android:layout_alignParentLeft="false"
         android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_action_add" />
+        app:srcCompat="@drawable/ic_action_remove" />
+
 </RelativeLayout>
